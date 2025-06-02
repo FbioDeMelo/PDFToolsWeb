@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor de PDF para Word</title>
+        <link rel="icon" href="https://ams3.cdnastron.com.br/modelo-v1-2/mod_preferencias/ext_header-login/cn150150/header-login-10638.jpg" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<nav class="navbar">
+    <a href="/" class="navbar-brand">
+        <img src="https://faculdadelibano.edu.br/_next/image?url=%2Froot%2Flogo-website-colorida.webp&w=384&q=75" alt="Faculdade Libano" class="navbar-logo">
+    </a>
+    <div class="hamburger" onclick="toggleMenu()">
+        <i class="fas fa-bars"></i>
+    </div>
+    <ul class="navbar-links">
+        <li><a href="/"><i class="fas fa-home"></i> Início</a></li>
+        <li class="dropdown">
+<a href="#" class="dropbtn"><i class="fas fa-tools"></i> Ferramentas <i class="fas fa-caret-down"></i></a>
+            <div class="dropdown-content">
+                <a href="/wordpfd">PDF para WORD</a>
+                <a href="/pdfword">WORD para PDF</a>
+                <a href="/imagepdf">PNG para PDF</a>
+                <a href="/pdfimage">PDF para PNG</a>
+
+            </div>
+        </li>
+        <li><a href="https://wa.me/553199283513?text=Ol%C3%A1%2C%20gostaria%20de%20informa%C3%A7%C3%B5es"><i class="fas fa-envelope"></i> Contato</a></li>
+    </ul>
+</nav>
+    <div class="main-content">
+        <div class="container">
+            <h1>Conversor de PDF para Word</h1>
+            <form id="convertForm" action="/convert-pdf" method="post" enctype="multipart/form-data">
+                <div class="file-upload-wrapper">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <p>Arraste e solte seus arquivos PDF aqui ou clique para selecionar</p>
+                    <input type="file" name="file" accept=".pdf" required multiple id="fileInput">
+                    <div class="file-info" id="fileInfo">Nenhum arquivo selecionado</div>
+                </div>
+                <button type="submit" class="btn btn-converter">
+                <i class="fas fa-file-export"></i> Converter para PDF
+                </button>
+                <button type="button" class="btn btn-secondary" onclick="abrirModal()">
+                    <i class="fas fa-trash-alt"></i> Limpar Seleção
+                </button>
+            </form>
+            <div id="modalAviso" class="modal">
+                <div class="modal-content">
+                    <img src="https://faculdadelibano.edu.br/_next/image?url=%2Froot%2Flogo-website-colorida.webp&w=384&q=75" alt="Faculdade Líbano" class="modal-logo">
+                    <span class="close" onclick="fecharModal()">&times;</span>
+                    <h2>Tem certeza que deseja limpar a seleção do arquivo?</h2>
+                    <div class="modal-buttons">
+                        <button class="btn btn-accent" onclick="limparArquivo()">
+                            <i class="fas fa-check"></i> Sim, limpar
+                        </button>
+                        <button class="btn btn-secondary" onclick="fecharModal()">
+                            <i class="fas fa-times"></i> Cancelar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="loader-container" id="loader">
+        <div class="loader">
+            <div class="loader-spinner"></div>
+            <p>Convertendo arquivos...</p>
+        </div>
+    </div>
+<footer class="site-footer">
+    <div class="footer-container">
+        <div class="footer-col">
+            <img src="https://institutolibanoead.com.br/_next/image?url=%2Froot%2Flogo-website-branca.webp&w=1920&q=75" alt="Faculdade Líbano" class="footer-logo">
+            <p>“Porventura não se converterá o Líbano, num breve momento, em campo fértil? E o campo fértil não se reputará por um bosque?”<br>– Isaías 29:17</p>
+        </div>
+        <div class="footer-col">
+            <h4>Links Rápidos</h4>
+            <ul>
+                <li><a href="https://libanoposgraduacao.com.br">Início</a></li>
+                <li><a href="/sobre">Sobre</a></li>
+                <li><a href="https://wa.me/553199283513?text=Ol%C3%A1%2C%20gostaria%20de%20informa%C3%A7%C3%B5es">Contato</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Redes Sociais</h4>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2025 Faculdade Líbano. Todos os direitos reservados.</p>
+    </div>
+</footer>
+    <script>
+        function toggleMenu() {
+            document.querySelector('.navbar-links').classList.toggle('active');
+        }
+        document.getElementById('fileInput').addEventListener('change', function() {
+            const fileInfo = document.getElementById('fileInfo');
+            if (this.files.length > 0) {
+                fileInfo.textContent = this.files[0].name;
+                fileInfo.style.color = 'var(--accent-color)';
+                fileInfo.style.fontWeight = '500';
+            } else {
+                fileInfo.textContent = 'Nenhum arquivo selecionado';
+                fileInfo.style.color = '#666';
+                fileInfo.style.fontWeight = 'normal';
+            }
+        });
+        document.getElementById('convertForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const loader = document.getElementById('loader');
+            loader.style.display = 'flex';
+            const submitBtn = document.querySelector('button[type="submit"]');
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processando...';
+            const formData = new FormData(this);
+            try {
+                const response = await fetch('/convert-pdf', {
+                    method: 'POST',
+                    body: formData
+                });
+                if (!response.ok) {
+                    throw new Error("Erro ao converter o arquivo.");
+                }
+                const blob = await response.blob();
+                const contentDisposition = response.headers.get("Content-Disposition");
+                let filename = "arquivo_convertido.docx";
+                if (contentDisposition && contentDisposition.includes("filename=")) {
+                    filename = contentDisposition.split("filename=")[1].replaceAll('"', '');
+                }
+                const link = document.createElement('a');
+                link.href = URL.createObjectURL(blob);
+                link.download = filename;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            } catch (err) {
+                alert(err.message);
+            } finally {
+                loader.style.display = 'none';
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<i class="fas fa-file-export"></i> Converter para Word';
+            }
+        });
+        function abrirModal() {
+            document.getElementById('modalAviso').style.display = 'flex';
+        }
+        function fecharModal() {
+            document.getElementById('modalAviso').style.display = 'none';
+        }
+        function limparArquivo() {
+            const fileInput = document.getElementById('fileInput');
+            const fileInfo = document.getElementById('fileInfo');
+            fileInput.value = '';
+            fileInfo.textContent = 'Nenhum arquivo selecionado';
+            fileInfo.style.color = '#666';
+            fileInfo.style.fontWeight = 'normal';
+            fecharModal();
+        }
+    </script>
+</body>
+</html>

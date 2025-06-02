@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Conversor de Arquivos PDF</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="https://ams3.cdnastron.com.br/modelo-v1-2/mod_preferencias/ext_header-login/cn150150/header-login-10638.jpg" type="image/png">
+    <link rel="stylesheet" href="/static/index.css">    
+    <link rel="icon" href="https://ams3.cdnastron.com.br/modelo-v1-2/mod_preferencias/ext_header-login/cn150150/header-login-10638.jpg" type="image/png">
+</head>
+<body>
+    <nav class="navbar">
+        <a href="https://faculdadelibano.edu.br/" class="navbar-brand">
+            <img src="https://faculdadelibano.edu.br/_next/image?url=%2Froot%2Flogo-website-colorida.webp&w=384&q=75" alt="Faculdade Libano" class="navbar-logo">
+        </a>
+        <div class="hamburger" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i>
+        </div>
+        <ul class="navbar-links">
+            <li><a href="/"><i class="fas fa-home"></i> Início</a></li>
+            <li><a href="/sobre"><i class="fas fa-info-circle"></i> Sobre</a></li>
+            <li><a href="https://wa.me/553199283513?text=Ol%C3%A1%2C%20gostaria%20de%20informa%C3%A7%C3%B5es
+"><i class="fas fa-envelope"></i> Contato</a></li>
+        </ul>
+    </nav>
+  <section class="hero">
+    <h1>Conversor de Arquivos PDF</h1>
+    <p>Ferramentas online rápidas e fáceis para converter entre formatos de documentos e imagens.</p>
+  </section>
+  <section class="tool-grid">
+    <div class="tool-card">
+      <div class="tool-icon"><i class="fas fa-file-word"></i></div>
+      <h2>Word para PDF</h2>
+      <p>Converta seus arquivos .docx para PDF mantendo a formatação original.</p>
+      <a href="/pdfword" class="btn">Converter</a>
+    </div>
+    <div class="tool-card">
+      <div class="tool-icon"><i class="fas fa-file-pdf"></i></div>
+      <h2>PDF para Word</h2>
+      <p>Transforme arquivos PDF em documentos editáveis no formato Word (.docx).</p>
+      <a href="/wordpdf" class="btn">Converter</a>
+    </div>
+    <div class="tool-card">
+      <div class="tool-icon"><i class="fas fa-image"></i></div>
+      <h2>PNG para PDF</h2>
+      <p>Converta imagens PNG em arquivos PDF de forma simples e rápida.</p>
+      <a href="/imgpdf" class="btn">Converter</a>
+    </div>
+    <div class="tool-card">
+      <div class="tool-icon"><i class="fas fa-file-image"></i></div>
+      <h2>PDF para PNG</h2>
+      <p>Extraia imagens PNG a partir das páginas de um arquivo PDF.</p>
+      <a href="/pdfimage" class="btn">Converter</a>
+    </div>
+  </section>
+<footer class="site-footer">
+    <div class="footer-container">
+        <div class="footer-col">
+            <img src="https://institutolibanoead.com.br/_next/image?url=%2Froot%2Flogo-website-branca.webp&w=1920&q=75" alt="Faculdade Líbano" class="footer-logo">
+            <p>“Porventura não se converterá o Líbano, num breve momento, em campo fértil? E o campo fértil não se reputará por um bosque?”<br>– Isaías 29:17</p>
+        </div>
+        <div class="footer-col">
+            <h4>Links Rápidos</h4>
+            <ul>
+                <li><a href="https://libanoposgraduacao.com.br">Início</a></li>
+                <li><a href="/sobre">Sobre</a></li>
+                <li><a href="https://wa.me/553199283513?text=Ol%C3%A1%2C%20gostaria%20de%20informa%C3%A7%C3%B5es">Contato</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Redes Sociais</h4>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2025 Faculdade Líbano. Todos os direitos reservados.</p>
+    </div>
+</footer>
+</body>
+<script>
+        function toggleMenu() {
+            const navbarLinks = document.querySelector('.navbar-links');
+            navbarLinks.classList.toggle('active');
+        }
+        </script>
+</html>
